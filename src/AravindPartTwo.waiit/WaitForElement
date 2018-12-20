@@ -1,0 +1,82 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class waitForElement {
+	 WebDriver driver = null;
+	 
+	 @BeforeClass
+	 public void openbrowser() { 
+		  System.setProperty("webdriver.gecko.driver",
+		    "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+		  driver = new FirefoxDriver();
+		  driver.manage().window().maximize();
+
+	  driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html");
+	  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	 }
+	 
+	 @AfterClass
+	 public void aftertest() {
+	  driver.quit();
+	  
+	 }
+	 
+	 @Test
+	  public void test () 
+	   {  
+	    
+	    driver.findElement(By.xpath("//input[@name='fname']")).sendKeys("My Name");
+	    //Wait for element to be clickable
+	    WebDriverWait wait = new WebDriverWait(driver, 15);
+	    wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#submitButton")));
+
+	    driver.findElement(By.cssSelector("#submitButton")).click();
+	   }
+	 public void HighlightMyElement(WebElement element) { 
+	  for (int i = 0; i < 10; i++) 
+	  { 
+	   JavascriptExecutor javascript = (JavascriptExecutor) driver;
+	   javascript.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: orange; border: 4px solid orange;");
+	   javascript.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: pink; border: 4px solid pink;");
+	   javascript.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, "color: yellow; border: 4px solid yellow;");
+	   javascript.executeScript("arguments[0].setAttribute('style', arguments[1]);", element, ""); 
+	   } 
+	  } 
+	 }
+
+
+[RemoteTestNG] detected TestNG version 6.13.1
+1537222080050	geckodriver	INFO	geckodriver 0.18.0
+1537222080060	geckodriver	INFO	Listening on 127.0.0.1:16288
+1537222080901	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537222083524	Marionette	INFO	Listening on port 52677
+1537222084027	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 17, 2018 6:08:04 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+PASSED: test
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================

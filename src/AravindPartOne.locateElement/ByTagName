@@ -1,0 +1,80 @@
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class byByTagName { 
+ 
+	WebDriver driver = null;
+	  
+	 //@BeforeMethod defines this method has to run before every @Test methods
+	 @BeforeClass
+	 public void openbrowser() { 
+		  System.setProperty("webdriver.gecko.driver",
+		             "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+	  driver = new FirefoxDriver();
+	  driver.manage().window().maximize();
+
+ //To Maximize Browser Window
+  driver.manage().window().maximize();
+
+ //To Open URL In browser
+  driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html");
+ }
+ 
+ @AfterClass
+ public void aftertest() {
+ driver.quit();
+  
+ }
+ 
+ @Test
+ public void test() 
+ {
+  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+ //Locating element by tagName and store its text in to variable dropdown.
+  String dropdown = driver.findElement(By.tagName("select")).getText();
+  System.out.print("Drop down list values are as bellow :\n"+dropdown);
+ }
+  }
+ 
+ 
+ [RemoteTestNG] detected TestNG version 6.13.1
+1537196058875	geckodriver	INFO	geckodriver 0.18.0
+1537196058886	geckodriver	INFO	Listening on 127.0.0.1:7926
+1537196059721	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537196062639	Marionette	INFO	Listening on port 65403
+1537196062845	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 17, 2018 10:54:22 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Drop down list values are as bellow :
+Volvo
+Saab
+Opel
+Audi
+Toyota
+RenaultPASSED: test
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+ 

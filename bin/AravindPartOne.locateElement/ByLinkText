@@ -1,0 +1,78 @@
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class ByLinkText { 
+ 
+	WebDriver driver = null;
+	  
+	 //@BeforeMethod defines this method has to run before every @Test methods
+	 @BeforeClass
+	 public void openbrowser() { 
+		  System.setProperty("webdriver.gecko.driver",
+		             "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+	  driver = new FirefoxDriver();
+	  driver.manage().window().maximize();
+
+ //To Maximize Browser Window
+  driver.manage().window().maximize();
+
+ //To Open URL In browser
+  driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html");
+ }
+ 
+ @AfterClass
+ public void aftertest() {
+ driver.quit();
+  
+ }
+ 
+ @Test
+ public void test() 
+ {
+  driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+  driver.findElement(By.linkText("Click Here")).click();//Locate element by linkText and then click on it.
+  WebDriverWait wait = new WebDriverWait(driver, 15);
+  wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText("8:"))); //Locate element by partial linkText. 
+ }
+
+ }
+ 
+ 
+ [RemoteTestNG] detected TestNG version 6.13.1
+1537219520380	geckodriver	INFO	geckodriver 0.18.0
+1537219520390	geckodriver	INFO	Listening on 127.0.0.1:42292
+1537219521233	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537219523592	Marionette	INFO	Listening on port 51318
+1537219524356	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 17, 2018 5:25:24 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+[Parent 7428, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+PASSED: test
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+ 

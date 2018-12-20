@@ -1,0 +1,58 @@
+
+import java.io.IOException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+
+public class waitForElementInvisible {
+ WebDriver driver = null;
+ 
+ @BeforeClass
+ public void beforetest() {
+	 System.setProperty("webdriver.gecko.driver",
+			    "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+	  driver = new FirefoxDriver();
+	  driver.manage().window().maximize();
+  driver.get("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
+ }
+ 
+ @AfterClass
+ public void aftertest() {
+  driver.quit();
+  
+ }
+ 
+ @Test
+ public void test () throws InterruptedException, IOException 
+ { 
+  //Wait for element invisible
+  WebDriverWait wait = new WebDriverWait(driver, 15);
+  wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//input[@id='text4']")));
+
+  System.out.print("Text box text4 is now invisible");      
+ }
+
+   
+}
+
+[RemoteTestNG] detected TestNG version 6.13.1
+1537236152250	geckodriver	INFO	geckodriver 0.18.0
+1537236152261	geckodriver	INFO	Listening on 127.0.0.1:20754
+1537236153098	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537236155791	Marionette	INFO	Listening on port 55467
+1537236156242	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 17, 2018 10:02:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Text box text4 is now invisible[Parent 9504, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+PASSED: test

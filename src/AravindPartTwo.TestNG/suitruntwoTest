@@ -1,0 +1,136 @@
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+public class baseClassOne {
+    //Declared as public static to use same webdriver instance publicly
+    //public static WebDriver driver = null;
+    public static WebDriver driver;
+    //@BeforeSuite annotation describes this method has to run before all suites
+    @BeforeSuite 
+    public void setup() throws Exception { 
+    	System.setProperty("webdriver.gecko.driver",
+   		  "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+    	 driver = new FirefoxDriver();
+         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+         driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html"); 
+    } 
+    //@AfterSuite annotation describes this method has to run after execution of all suites
+    @AfterSuite
+         public void tearDown() throws Exception { 
+         driver.quit(); 
+    } 
+}
+
+
+import org.testng.annotations.Test;
+
+
+public class classOne extends TestNG.baseClassOne{
+ 
+ //@Test annotation describes this method as a test method
+ @Test
+  public void testmethodone() {
+    String title = driver.getTitle();
+    System.out.print("\nCurrent page title is : "+title);
+    String Workdir = System.getProperty("user.dir");
+    String Classpackname = this.getClass().getName();
+    System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+
+import org.testng.annotations.Test;
+
+public class classTwo extends TestNG.baseClassOne{
+ 
+ //@Test annotation describes this method as a test method
+ @Test
+  public void testmethodone() {
+  driver.navigate().to("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
+  String title = driver.getTitle();
+  System.out.print("\nCurrent page title is : "+title);
+  String Workdir = System.getProperty("user.dir");
+  String Classpackname = this.getClass().getName();
+  System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite One" >
+ <test name="Test One" >
+  <classes>
+   <class name="TestNG.classOne" />
+   <class name="TestNG.classTwo" /> 
+  </classes>
+ </test> 
+</suite>
+[RemoteTestNG] detected TestNG version 6.13.1
+1537245628315	geckodriver	INFO	geckodriver 0.18.0
+1537245628325	geckodriver	INFO	Listening on 127.0.0.1:11955
+1537245629151	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537245631689	Marionette	INFO	Listening on port 56929
+1537245632279	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 18, 2018 12:40:32 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+
+Current page title is : Only Testing: New Test
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNG.classOne -> testmethodone' has been executed successfully
+Current page title is : Only Testing: TextBox
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNG.classTwo -> testmethodone' has been executed successfully[Parent 7060, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+===============================================
+Suite One
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================
+
+
+
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite One" >
+ <test name="Test One" >
+  <classes>
+   <class name="TestNGOnePack.ClassOne" />  
+  </classes>
+ </test> 
+ <test name="Test Two" >
+  <classes>
+   <class name="TestNGOnePack.ClassTwo" /> 
+  </classes>
+ </test> 
+</suite>
+
+
+[RemoteTestNG] detected TestNG version 6.13.1
+1537245547088	geckodriver	INFO	geckodriver 0.18.0
+1537245547098	geckodriver	INFO	Listening on 127.0.0.1:36695
+1537245547927	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537245550500	Marionette	INFO	Listening on port 56849
+1537245551064	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 18, 2018 12:39:11 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+
+Current page title is : Only Testing: New Test
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNG.classOne -> testmethodone' has been executed successfully
+Current page title is : Only Testing: TextBox
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNG.classTwo -> testmethodone' has been executed successfully
+===============================================
+Suite One
+Total tests run: 2, Failures: 0, Skips: 0
+===============================================

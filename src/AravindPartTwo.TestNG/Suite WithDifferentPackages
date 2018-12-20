@@ -1,0 +1,169 @@
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+
+public class BaseClassOne {
+    //Declared as public static to use same webdriver instance publicly
+    public static WebDriver driver;
+
+    //@BeforeSuite annotation describes this method has to run before all suites
+    @BeforeSuite 
+    public void setup() throws Exception { 
+    	System.setProperty("webdriver.gecko.driver",
+    			  "C:\\Users\\ermao\\eclipse-Aravind\\AravindSeleniumWebdriverpart_1_2\\src\\browersExe\\geckodriver.exe");
+    			  driver = new FirefoxDriver();
+    			  driver.get("http://only-testing-blog.blogspot.in/2013/11/new-test.html"); 
+    } 
+    //@AfterSuite annotation describes this method has to run after execution of all suites
+    @AfterSuite
+         public void tearDown() throws Exception { 
+         driver.quit(); 
+    } 
+}
+
+
+package TestNGOnePack;
+
+import org.testng.annotations.Test;
+
+public class ClassOne extends TestNGOnePack.BaseClassOne{
+ 
+ //@Test annotation describes this method as a test method
+ @Test
+  public void testmethodone() {
+    String title = driver.getTitle();
+    System.out.print("\nCurrent page title is : "+title);
+    String Workdir = System.getProperty("user.dir");
+    String Classpackname = this.getClass().getName();
+    System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+
+package TestNGOnePack;
+
+
+import org.testng.annotations.Test;
+
+public class ClassTwo extends TestNGOnePack.BaseClassOne{
+ 
+ //@Test annotation describes this method as a test method
+ @Test
+  public void testmethodone() {
+  driver.navigate().to("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
+  String title = driver.getTitle();
+  System.out.print("\nCurrent page title is : "+title);
+  String Workdir = System.getProperty("user.dir");
+  String Classpackname = this.getClass().getName();
+  System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+
+package TestNGThreePack;
+
+import org.testng.annotations.Test;
+
+public class ClassOne extends TestNGOnePack.BaseClassOne{
+  
+ @Test
+  public void testmethodone() {
+    String title = driver.getTitle();
+    System.out.print("\nCurrent page title is : "+title);
+    String Workdir = System.getProperty("user.dir");
+    String Classpackname = this.getClass().getName();
+    System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+package TestNGThreePack;
+
+
+import org.testng.annotations.Test;
+
+public class ClassTwo extends TestNGOnePack.BaseClassOne{
+  
+ @Test
+  public void testmethodone() {
+  driver.navigate().to("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
+  String title = driver.getTitle();
+  System.out.print("\nCurrent page title is : "+title);
+  String Workdir = System.getProperty("user.dir");
+  String Classpackname = this.getClass().getName();
+  System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+package TestNGTwoPack;
+
+import org.testng.annotations.Test;
+
+public class ClassOne extends TestNGOnePack.BaseClassOne{
+  
+ @Test
+  public void testmethodone() {
+    String title = driver.getTitle();
+    System.out.print("\nCurrent page title is : "+title);
+    String Workdir = System.getProperty("user.dir");
+    String Classpackname = this.getClass().getName();
+    System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+
+package TestNGTwoPack;
+
+
+import org.testng.annotations.Test;
+
+public class ClassTwo extends TestNGOnePack.BaseClassOne{
+  
+ @Test
+  public void testmethodone() {
+  driver.navigate().to("http://only-testing-blog.blogspot.in/2014/01/textbox.html");
+  String title = driver.getTitle();
+  System.out.print("\nCurrent page title is : "+title);
+  String Workdir = System.getProperty("user.dir");
+  String Classpackname = this.getClass().getName();
+  System.out.print("\n'"+Workdir+" -> "+Classpackname+" -> testmethodone' has been executed successfully");
+  }
+}
+
+
+
+
+
+[RemoteTestNG] detected TestNG version 6.13.1
+1537247473005	geckodriver	INFO	geckodriver 0.18.0
+1537247473015	geckodriver	INFO	Listening on 127.0.0.1:43725
+1537247473876	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537247476495	Marionette	INFO	Listening on port 57233
+1537247477004	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 18, 2018 1:11:17 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+
+Current page title is : Only Testing: New Test
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNGOnePack.ClassOne -> testmethodone' has been executed successfully
+Current page title is : Only Testing: TextBox
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNGTwoPack.ClassTwo -> testmethodone' has been executed successfully
+Current page title is : Only Testing: TextBox
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNGThreePack.ClassOne -> testmethodone' has been executed successfully
+Current page title is : Only Testing: TextBox
+'C:\Users\ermao\eclipse-Aravind\AravindSeleniumWebdriverpart_1_2 -> TestNGThreePack.ClassTwo -> testmethodone' has been executed successfully[Parent 10536, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+===============================================
+Suite One
+Total tests run: 4, Failures: 0, Skips: 0
+===============================================

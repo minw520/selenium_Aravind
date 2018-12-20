@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="-1" guice-stage="DEVELOPMENT" name="Failed suite [Suite One]">
+  <test name="Test One(failed)">
+    <classes>
+      <class name="TestNGThreePack.ClassTwo">
+        <methods>
+          <include name="testmethodone"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestNGThreePack.ClassTwo -->
+      <class name="TestNGTwoPack.ClassTwo">
+        <methods>
+          <include name="testmethodone"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestNGTwoPack.ClassTwo -->
+      <class name="TestNGThreePack.ClassOne">
+        <methods>
+          <include name="testmethodone"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestNGThreePack.ClassOne -->
+      <class name="TestNGOnePack.ClassOne">
+        <methods>
+          <include name="testmethodone"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestNGOnePack.ClassOne -->
+    </classes>
+  </test> <!-- Test One(failed) -->
+</suite> <!-- Failed suite [Suite One] -->

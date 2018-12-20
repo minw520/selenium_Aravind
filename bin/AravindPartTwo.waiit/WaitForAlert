@@ -1,0 +1,107 @@
+import java.util.concurrent.TimeUnit;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class Mytest1 {
+ WebDriver driver = null;
+ 
+ @Before
+ public void beforetest() {
+  System.setProperty("webdriver.gecko.driver", "D:\\Selenium Files\\geckodriver.exe");
+  driver = new FirefoxDriver();
+  driver.manage().window().maximize();
+  driver.get("http://only-testing-blog.blogspot.in/2014/01/new-testing.html");
+ }
+ 
+ @After
+ public void aftertest() {
+  driver.quit();
+  
+ }
+ 
+ @Test
+ public void test () 
+  {  
+  driver.findElement(By.xpath("//input[@name='fname']")).sendKeys("My Name");
+  WebDriverWait wait = new WebDriverWait(driver, 15);
+  wait.until(ExpectedConditions.alertIsPresent());
+  String alrt = driver.switchTo().alert().getText();
+  System.out.print(alrt);
+  }
+ 
+  
+ }
+ 
+ 
+ 
+ [RemoteTestNG] detected TestNG version 6.13.1
+1537224365374	geckodriver	INFO	geckodriver 0.18.0
+1537224365385	geckodriver	INFO	Listening on 127.0.0.1:16744
+1537224366212	geckodriver::marionette	INFO	Starting browser C:\Program Files\Mozilla Firefox\firefox.exe with args ["-marionette"]
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+Unable to read VR Path Registry from C:\Users\ermao\AppData\Local\openvr\openvrpaths.vrpath
+1537224368712	Marionette	INFO	Listening on port 53769
+1537224369329	Marionette	WARN	TLS certificate errors will be ignored for this session
+Sep 17, 2018 6:46:09 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+Sep 17, 2018 6:46:13 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:14 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:14 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:15 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:15 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:16 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:16 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:17 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:17 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:18 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:18 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:19 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:19 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:20 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:20 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:21 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:22 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:22 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Sep 17, 2018 6:46:23 PM org.openqa.selenium.remote.ErrorCodes toStatus
+INFO: HTTP Status: '400' -> incorrect JSON status mapping for 'no such alert' (404 expected)
+Now you can click on submit query button!PASSED: test
+
+===============================================
+    Default test
+    Tests run: 1, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 1, Failures: 0, Skips: 0
+===============================================
